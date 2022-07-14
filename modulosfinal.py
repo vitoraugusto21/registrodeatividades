@@ -45,7 +45,37 @@ def exibirAtividade(registro):
         DIA: {registro[atividade]['DIA']}
         HORARIO: {registro[atividade]['HORARIO']}
         TIPO DE ATIVIDADE: {registro[atividade]['TIPO']}""") 
-    
+
+def contador(lista, valor):
+    cont = 0
+    for c in lista:
+        if c == valor:
+            cont += 1
+    return cont
+def diasehorarios(dia,registro):
+    horas = []
+    for i in range(8,21):
+        for key in registro:                                
+            if registro[key]['DIA'] == dia and registro[key]['HORARIO'] == i:
+                horas.append(registro[key]['HORARIO'])
+                if contador(horas,i) > 1 :
+                    print(f"""
+                    AS {i} HORAS OCORRERÁ:""")
+                    for key in registro:  
+                        if registro[key]['HORARIO'] == i:                
+                            print(f"{registro[key]['TITULO']} DO TIPO {registro[key]['TIPO']}")
+                
+        #else:
+           # for key in registro:            
+                #if registro[key]['DIA'] == dia and registro[key]['HORARIO'] == i:
+                 #   if i in horas:
+                       # horas.append(i)                    
+                       # print(f"""                
+                      #  {registro[key]['TITULO']} DO TIPO {registro[key]['TIPO']} AS {i} HORAS
+                      #  """)
+                    
+                    
+
 def relatorio(registro):
     quantAtividadesseg = 0
     quantAtividadester = 0
@@ -76,6 +106,8 @@ def relatorio(registro):
             quantPoster += 1
         elif registro[atividade]['TIPO'] == 'LABORATORIO':
             quantLab += 1
+
+        
     print(f"""
     ACONTECERÁ NA SEGUNDA: {quantAtividadesseg} ATIVIDADES 
     ACONTECERÁ NA TERÇA: {quantAtividadester} ATIVIDADES 
@@ -91,6 +123,27 @@ def relatorio(registro):
     ------------------------------------------------------
     """)
     
+    
+    print('-----ATIVIDADES DA SEGUNDA COM HORARIOS IGUAIS-----')
+
+    
+    diasehorarios('SEGUNDA',registro)
+    print('-----ATIVIDADES DA TERÇA COM HORARIOS IGUAIS-----')
+    
+    diasehorarios('TERCA',registro)
+    print('-----ATIVIDADES DA QUARTA COM HORARIOS IGUAIS-----')
+   
+    diasehorarios('QUARTA',registro)
+    print('-----ATIVIDADES DA QUINTA COM HORARIOS IGUAIS-----')
+    
+    diasehorarios('QUINTA',registro)
+    print('-----ATIVIDADES DA SEXTA COM HORARIOS IGUAIS-----')
+
+    diasehorarios('SEXTA',registro)
+            
+
+
+
 def gravar(registro):
     arquivo = open('programação.txt','w',encoding= 'utf-8')    
     for atividade in registro:
@@ -152,7 +205,7 @@ def gravar(registro):
                 arquivo.write(f"""{registro[atividades]['TITULO']}, {registro[atividades]['TIPO']}
                 """)
             arquivo.close()
-
-dicio = {}
-
+def gravardados(dicio):
+    with open('dadosprogramacao.txt','w',encoding='utf-8') as arquivo:
+        arquivo.write(f'{dicio}')
 
