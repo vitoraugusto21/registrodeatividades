@@ -1,14 +1,3 @@
-#/*******************************************************************
-#Autor: Vitór Augusto Novaes de Jesus
-#Componente Curricular: MI - ALGORITMOS
-#Concluído em: 15/07/2022
-#Declaro que este código foi elaborado por mim de forma individual e não contém 
-#nenhum trecho de código de colega ou de outro autor, tais como provindos de livros e 
-#apostilas, e páginas ou documentos eletrônicos da internet. Qualquer trecho de código 
-#de outra autoria que não a minha está destacado com uma citação do autor e a fonte do
-#código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
-#**********************************************************************/
-
 from modulosfinal import exibirAtividade, registrarAtividade,gravar,relatorio,menu,gravardados
 import os
 
